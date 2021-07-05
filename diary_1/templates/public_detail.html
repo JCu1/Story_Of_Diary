@@ -1,0 +1,116 @@
+<!DOCTYPE html">
+{% load static %}
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/default.css'%}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/print.css'%}" media="print" />
+<style>
+textarea {
+color:black;
+background:lightblue;
+boarder:white;
+}
+input{
+color:black;
+background:lightgray;
+}
+h2{
+color:black;
+}
+</style>
+</head>
+<body>
+<div id="view">
+  <!-- #header (main heading + logo with slogan) -->
+  <div id="head">
+    <!-- main headings with search component -->
+<div id="main">
+            <h1>日记故事</a></h1>
+            <h2>test version</a></h2>   
+            <div id="search">   
+	      <h2 style="color:black;">已登录：{{name}}</h2> 
+                <li><a href="/private/signOut">注销</a></li>
+                </div>
+    </div>
+    <!-- /main headings with search component -->
+    <hr class="hidden" />
+    <!-- main horizontal menu -->
+    <div id="mainMenu">
+      <ul>
+        <li><a href="/public/page/1"><font size=3>日记广场<span></span></font></a></li>
+        <li class="active"><a href="/private/page/1"><font size=3>个人主页<span></span></font></a></li>
+        <li><a href="/private/edit/new/"><font size=3>写日记<span></span></font></a></li>
+        <li class="fr"><a href="/private/setting"><font size=3>个人设置<span</span></font></a></li>
+        <li class="fr"><a href="/help"><font size=3>获取帮助<span></span></font></a></li>
+      </ul>
+    </div>
+    <!-- /main horizontal menu -->
+    <hr class="hidden" />
+    <!-- logo with slogan -->
+    <div id="logo">
+    </div>
+    <!-- /logo with slogan -->
+    <hr class="hidden" />
+  </div>
+  <!-- /#header (main heading + logo with slogan) -->
+  <!-- #main content construct -->
+  <div id="content">
+    <!-- #left part of web - main content -->
+    <div id="contentBlock">
+      <!-- #first (main) article -->
+      <div class="item mainItem">
+	<p class="info"><font size="5">日记广场</font></p>	
+        <p class="info">日记 :{{title}}</p>
+	<p class="info">作者{{author}}</p>
+	<p class="info">赞{{praise}}</p>
+        <p class="info"><span class="date">发布日期：{{pub_date}}</span></p>
+	<pre><p class="perex"><font size="3">{{text}}</font></p></pre>
+      
+      </div>
+  <!-- /#main content construct -->
+  <!-- #accessible components - do not delete this !!! -->
+  <hr class="hidden" />
+  <ul class="hidden">
+    <li><a href="#view">On top</a></li>
+    <li><a href="#content">Back to content</a></li>
+  </ul>
+  <hr class="hidden" />
+  <!-- /#accessible components -->
+</div>
+<div id="menuBlock">
+	<div class="box boxText firstBox">
+        <h3>个人信息</h3>
+        <div class="img"><img src={{img.url}} width="56" alt="" /></div>
+        <div class="self">
+          <p class="last">用户名：{{name}}<br />
+            年龄:&nbsp;{{age}}&nbsp;岁<br />
+            生日：{{year}}-{{month}}-{{day}}<br/>
+            性别：{{sex}}<br/>
+            电话：{{phone}}<br/>
+            邮箱：{{email}}<br/>
+                </div>
+                </div>
+      <div class="box subMenu">
+        <h3>按日期查看:</h3>
+		<form action={% url 'private' 1%} method="post" id="view_by_date">
+			{% csrf_token %}
+          <ul>
+              <input onclick="SelectDate(this,'yyyy-MM-dd')" readonly="true"  type="text" name="date">
+          </ul>
+		</form>
+      </div>
+    </div>
+    <!-- /#right part of web -->
+  </div>
+  <!-- #footer -->
+  <div id="foot">
+    <p class="fl">&copy; all rights reserved</p>
+    <!-- /#   LINKS AND AUTHOR-SIGNATURE CANNOT BE REMOVED !!! -->
+    <p class="fr">created by&nbsp;<a class="ico ico-breezy">软工小组</a></p>
+  </div>
+  <!-- /#footer -->
+</div>
+</body>
+</html>
+
